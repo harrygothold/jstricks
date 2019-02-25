@@ -54,4 +54,54 @@ console.log(arr2);
 var result = Object.keys(person).map(key => [key, person[key]]);
 console.log(result);
 
-console.log(Object.entries(person))
+console.log(Object.entries(person));
+
+/*
+ *
+ * Check if a property exists in an object
+ *
+ */
+
+var user = {
+    name: 'John',
+    address: {
+        street: 'Main',
+        city: 'London'
+    }
+};
+
+// var property = 'street' in user.address;
+// console.log(property);
+
+var property = user.hasOwnProperty();
+console.log(property);
+
+
+/*
+ *
+ * Prevent object properties from being added
+ *
+ */
+
+var user = {
+    name: 'jeff',
+    email: 'jeff@gmail.com'
+}
+
+Object.getOwnPropertyDescriptor(user);
+Object.preventExtensions(user); // can't add a property
+
+/*
+ *
+ * Prevent object properties from being deleted
+ *
+ */
+
+var user = {
+    name: 'john',
+    email: 'john@gmail.com'
+}
+
+Object.getOwnPropertyDescriptor(user); // to check properties
+Object.seal(user); //prevents value modification
+
