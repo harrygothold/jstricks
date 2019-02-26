@@ -105,3 +105,98 @@ var user = {
 Object.getOwnPropertyDescriptor(user); // to check properties
 Object.seal(user); //prevents value modification
 
+/*
+ *
+ * Prevent object properties from being modified
+ *
+ */
+
+var user = {
+    name: 'Greg',
+    email: 'greg@gmail.com'
+}
+
+Object.freeze(user); //makes it impossible to edit
+console.log(Object.isFrozen(user)); //checks if its frozen
+
+
+/*
+ *
+ * Merge multiple objects into one object
+ *
+ */
+
+let defaultUser = {
+    name: '',
+    email: '',
+    subscribed: true
+}
+
+let actualUser = {
+    name: 'John',
+    email: 'john@gmail.com'
+}
+
+var user2 = {
+    phone: 555 - 555 - 555
+}
+
+// let userData = Object.assign(defaultUser, actualUser);
+// console.log(userData);
+
+var userData = { ...defaultUser, ...actualUser };
+console.log(userData);
+
+
+/*
+ *
+ * Computed properties -- dynamically choose name of properties on objects
+ *
+ */
+
+var key = window.prompt('Set a property name');
+
+var obj = {
+    [key]: 1
+}
+
+/*
+ *
+ * Delete or filter a property from an object
+ *
+ */
+
+var name = {
+    first: 'John',
+    last: 'Doe',
+}
+
+// delete name.last;
+// console.log(name);
+
+function filterObj(obj, prop) {
+    var filteredObj = {}
+    var result = Object.keys(obj).filter(k => k !== prop).map(key => filteredObj[key] = obj[key]);
+    console.log(filteredObj);
+    return filteredObj;
+}
+
+filterObj(name, 'last');
+
+/*
+ *
+ * Get all values in an object
+ *
+ */
+
+var name = {
+    first: "John",
+    last: 'Doe',
+    age: 40
+}
+
+// var values = Object.keys(name).map(key => name[key]);
+// console.log(values);
+
+var values = Object.values(name);
+console.log(values);
